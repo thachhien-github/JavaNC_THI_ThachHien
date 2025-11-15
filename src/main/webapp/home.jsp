@@ -6,7 +6,7 @@
 <jsp:include page="shared/nav.jsp" />
 
 <div class="container mt-3">
-    <h4 class="alert alert-primary">6 Sản phẩm khuyến mãi</h4>
+    <h4 class="alert alert-primary">Sản phẩm khuyến mãi</h4>
     <div class="row">
         <c:forEach var="sp" items="${spkm}">
             <div class="col-12 col-md-6 col-lg-4">
