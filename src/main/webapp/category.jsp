@@ -6,28 +6,44 @@
 <jsp:include page="shared/header.jsp" />
 <jsp:include page="shared/nav.jsp" />
 
-<fmt:setLocale value="vi_VN" />
-
 <div class="container mt-3">
     <div class="row">
-        <!-- Sản phẩm chính -->
+
+        <!-- Danh sách thể loại bên trái -->
+        <div class="col-md-3">
+            <h5 class="alert alert-info text-center">Category</h5>
+            <ul class="list-group">
+                <c:forEach var="tl" items="${dsmaloai}">
+                    <li class="list-group-item">
+                        <a href="san-pham?maloai=${tl.maloai}">
+                            ${tl.tenloai}
+                        </a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+
+        <!-- Sản phẩm chính bên phải -->
         <div class="col-md-9">
             <h4 class="alert alert-primary">
                 Sản phẩm thể loại: ${theLoaiChon.tenloai} (Tổng: ${fn:length(dsSp)})
             </h4>
+
             <div class="row">
                 <c:forEach var="sp" items="${dsSp}">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card mb-3">
                             <div class="card-header">${sp.tensp}</div>
                             <div class="card-body text-center">
-                                <img class="card-img-top" src="assets/images/products/${sp.hinh}" alt="${sp.tensp}">
+                                <img class="card-img-top" 
+                                     src="assets/images/products/${sp.hinh}" 
+                                     alt="${sp.tensp}">
                             </div>
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col">
                                         <p class="btn btn-danger btn-block">
-                                            <fmt:formatNumber value="${sp.dongia}" type="number"/> đ
+                                        <fmt:formatNumber value="${sp.dongia}" type="number" /> đ
                                         </p>
                                     </div>
                                     <div class="col">
@@ -41,17 +57,6 @@
             </div>
         </div>
 
-        <!-- Danh sách thể loại bên phải -->
-        <div class="col-md-3">
-            <h5 class="alert alert-info">Category</h5>
-            <ul class="list-group">
-                <c:forEach var="tl" items="${dsmaloai}">
-                    <li class="list-group-item">
-                        <a href="san-pham?maloai=${tl.maloai}">${tl.tenloai}</a>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
     </div>
 </div>
 
